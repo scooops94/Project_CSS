@@ -1,0 +1,8 @@
+pop_data=c1.acs1.get('B01003_001E', {'for': 'state:*'})
+m_pd = pd.DataFrame(pop_data)
+m_pd = m_pd.rename(columns={"B01003_001E": "Population", 
+                                       "state": "State Code"})
+m_pd = m_pd[["State Code","Population"]]
+m_pd=m_pd.fillna(0)
+m_pd.head()
+m_pd.to_csv("US_Population.csv", encoding="utf-8", index=False)
